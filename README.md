@@ -37,7 +37,9 @@ src/openclaw_mcp/
 ├── __main__.py     # Point d'entrée python -m
 └── core/
     ├── errors.py   # Erreurs applicatives publiques
-    └── logging.py  # Logs stderr sans secrets
+    ├── http.py     # Client HTTP partagé et retries bornés
+    ├── logging.py  # Logs stderr sans secrets
+    └── security.py # Validation des URLs externes
 ```
 
 ## Sécurité

@@ -20,6 +20,14 @@ class AuthorizationError(OpenClawMCPError):
 class ExternalAPIError(OpenClawMCPError):
     """Raised for an external API failure without exposing raw secrets."""
 
+    def __init__(self, message: str, *, status_code: int | None = None) -> None:
+        super().__init__(message)
+        self.status_code = status_code
+
 
 class RateLimitError(ExternalAPIError):
     """Raised when an external API rate limit is reached."""
+
+    def __init__(self, message: str, *, retry_after: float | None = None) -> None:
+        super().__init__(message, status_code=429)
+        self.retry_after = retry_after
