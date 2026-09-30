@@ -26,7 +26,24 @@ uv run mypy src
 
 ## Configuration
 
-Les variables d'environnement sont chargées par Pydantic Settings. Les tokens ne sont pas encore consommés par le socle et doivent rester hors du dépôt. Voir `.env.example`.
+Les variables d'environnement sont chargées par Pydantic Settings. Configurez `GITHUB_TOKEN` pour GitHub, `META_ACCESS_TOKEN` pour les Pages Facebook et `INSTAGRAM_ACCESS_TOKEN` pour Instagram. Les tokens doivent rester hors du dépôt. Voir `.env.example`.
+
+## Facebook et Instagram
+
+Les outils Meta utilisent uniquement l'API Graph officielle sur `graph.facebook.com`.
+
+Facebook expose `facebook_get_pages`, `facebook_get_page`, `facebook_create_page_post` et `facebook_get_page_posts`. La publication nécessite un Page access token obtenu en interne via `/me/accounts`; ce token n'est jamais retourné par le serveur. Les permissions Meta généralement nécessaires sont `pages_show_list`, `pages_read_engagement`, `pages_manage_metadata` et `pages_manage_posts`, selon la version et la validation de votre application.
+
+Instagram expose `instagram_get_profile`, `instagram_get_media`, `instagram_create_media_container` et `instagram_publish_media`. Ces outils ciblent les comptes Instagram professionnels éligibles, pas les comptes personnels. Il faut généralement une application Meta, un compte professionnel relié à une Page Facebook, un access token et les permissions `instagram_basic` et `instagram_content_publish`. Les URLs image ou vidéo doivent être publiques et accessibles en HTTPS par Meta. Le serveur ne télécharge pas ces fichiers et ne fait aucun scraping.
+
+La publication Instagram se déroule en deux étapes :
+
+```text
+instagram_create_media_container
+→ instagram_publish_media
+```
+
+La première étape crée un container mais ne publie pas encore le contenu. `instagram_publish_media` est une action réelle et est explicitement signalée comme telle dans sa description MCP.
 
 ## Structure
 

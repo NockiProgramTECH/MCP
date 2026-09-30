@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     tiktok_access_token: SecretStr | None = Field(
         default=None, validation_alias="TIKTOK_ACCESS_TOKEN"
     )
+    meta_graph_api_version: str = "v26.0"
 
     @field_validator(
         "github_token",

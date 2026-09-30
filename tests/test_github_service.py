@@ -58,7 +58,7 @@ async def test_github_create_issue_posts_expected_payload() -> None:
 
 @pytest.mark.asyncio
 async def test_github_requires_configuration() -> None:
-    settings = Settings(max_retries=0)
+    settings = Settings(github_token=None, max_retries=0)
     service = GitHubService(settings)
     with pytest.raises(ConfigurationError, match="GITHUB_TOKEN"):
         await service.get_user()

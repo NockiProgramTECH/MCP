@@ -1,5 +1,5 @@
 from openclaw_mcp.core.errors import ExternalAPIError
-from openclaw_mcp.core.security import validate_external_url
+from openclaw_mcp.core.security import validate_external_url, validate_public_media_url
 
 
 def test_allows_https_url_on_explicit_host() -> None:
@@ -31,3 +31,12 @@ def test_rejects_url_credentials() -> None:
         assert "credentials" in str(exc)
     else:
         raise AssertionError("URL credentials were accepted")
+
+
+def test_rejects_private_media_url() -> None:
+    try:
+        validate_public_media_url("https://10.0.0.1/media.jpg")
+    except ExternalAPIError as exc:
+        assert "Private" in str(exc)
+    else:
+        raise AssertionError("private media URL was accepted")
