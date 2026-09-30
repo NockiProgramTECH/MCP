@@ -88,7 +88,9 @@ class HttpClient:
                 if attempt < retries:
                     await asyncio.sleep(retry_after or 2**attempt)
                     continue
-                raise RateLimitError("The external API rate limit was reached.", retry_after=retry_after)
+                raise RateLimitError(
+                    "The external API rate limit was reached.", retry_after=retry_after
+                )
 
             if response.status_code in {500, 502, 503, 504} and attempt < retries:
                 await asyncio.sleep(2**attempt)
