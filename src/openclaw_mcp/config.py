@@ -19,6 +19,7 @@ class Settings(BaseSettings):
         env_prefix="OPENCLAW_MCP_",
         extra="ignore",
         case_sensitive=False,
+        populate_by_name=True,
     )
 
     github_token: SecretStr | None = Field(default=None, validation_alias="GITHUB_TOKEN")

@@ -6,6 +6,8 @@ from mcp.server.fastmcp import FastMCP
 
 from .config import get_settings
 from .core.logging import configure_logging
+from .services.github import GitHubService
+from .tools.github import register_github_tools
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +22,10 @@ def create_server() -> FastMCP:
             "Only use write tools when the user explicitly requests the external action."
         ),
     )
+
+    github_service = GitHubService(settings)
+    register_github_tools(server, github_service)
+    server._managed_services = [github_service]  # type: ignore[attr-defined]
 
     @server.tool(description="Returns the server name and configured integration status.")
     def server_status() -> dict[str, object]:
@@ -41,4 +47,11 @@ def run() -> None:
     settings = get_settings()
     configure_logging(settings.log_level)
     logger.info("Starting OpenClaw MCP server over stdio")
-    create_server().run(transport="stdio")
+    server = create_server()
+    try:
+        server.run(transport="stdio")
+    finally:
+        import asyncio
+
+        for service in getattr(server, "_managed_services", []):
+            asyncio.run(service.aclose())

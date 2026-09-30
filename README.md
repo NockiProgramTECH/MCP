@@ -2,7 +2,7 @@
 
 Serveur MCP Python destiné à connecter OpenClaw à des APIs externes de manière modulaire et sécurisée.
 
-> Le socle MCP est en cours de construction. Les intégrations GitHub et sociales seront ajoutées dans les prochaines étapes.
+> L'intégration GitHub est disponible. Les intégrations sociales seront ajoutées dans les prochaines étapes.
 
 ## Développement local
 
