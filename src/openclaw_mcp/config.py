@@ -30,7 +30,24 @@ class Settings(BaseSettings):
     instagram_access_token: SecretStr | None = Field(
         default=None, validation_alias="INSTAGRAM_ACCESS_TOKEN"
     )
-    tiktok_access_token: SecretStr | None = Field(default=None, validation_alias="TIKTOK_ACCESS_TOKEN")
+    tiktok_access_token: SecretStr | None = Field(
+        default=None, validation_alias="TIKTOK_ACCESS_TOKEN"
+    )
+
+    @field_validator(
+        "github_token",
+        "linkedin_access_token",
+        "meta_access_token",
+        "instagram_access_token",
+        "tiktok_access_token",
+        mode="before",
+    )
+    @classmethod
+    def empty_token_is_unconfigured(cls, value: object) -> object:
+        """Treat an empty .env value as an absent optional credential."""
+        if isinstance(value, str) and not value.strip():
+            return None
+        return value
 
     log_level: str = "INFO"
     http_timeout_seconds: float = 15.0

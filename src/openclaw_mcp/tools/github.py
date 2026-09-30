@@ -8,7 +8,6 @@ from pydantic import Field
 from ..models.github import GitHubIssueCreate, GitHubRepositoryCreate
 from ..services.github import GitHubService
 
-
 Page = Annotated[int, Field(ge=1, le=10_000)]
 PerPage = Annotated[int, Field(ge=1, le=100)]
 Name = Annotated[str, Field(min_length=1, max_length=100)]
@@ -50,7 +49,9 @@ def register_github_tools(server: FastMCP, service: GitHubService) -> None:
         )
         return await service.create_issue(owner, repo, payload)
 
-    @server.tool(description="Lists issues for a GitHub repository without modifying external state.")
+    @server.tool(
+        description="Lists issues for a GitHub repository without modifying external state."
+    )
     async def github_list_issues(
         owner: Name,
         repo: Name,

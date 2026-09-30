@@ -30,7 +30,9 @@ class GitHubService:
     def _headers(self) -> dict[str, str]:
         token = self._settings.github_token
         if token is None:
-            raise ConfigurationError("GitHub is not configured. Set GITHUB_TOKEN in the environment.")
+            raise ConfigurationError(
+                "GitHub is not configured. Set GITHUB_TOKEN in the environment."
+            )
         return {
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {token.get_secret_value()}",
@@ -47,14 +49,21 @@ class GitHubService:
             "GET",
             f"{_GITHUB_BASE_URL}/user/repos",
             headers=self._headers(),
-            params={"page": page, "per_page": per_page, "visibility": visibility, "sort": "updated"},
+            params={
+                "page": page,
+                "per_page": per_page,
+                "visibility": visibility,
+                "sort": "updated",
+            },
         )
         return _JSON_LIST.validate_python(response.json())
 
     async def get_repository(self, owner: str, repo: str) -> dict[str, Any]:
         return await self._get_object(f"/repos/{_path_part(owner)}/{_path_part(repo)}")
 
-    async def create_issue(self, owner: str, repo: str, payload: GitHubIssueCreate) -> dict[str, Any]:
+    async def create_issue(
+        self, owner: str, repo: str, payload: GitHubIssueCreate
+    ) -> dict[str, Any]:
         return await self._post_object(
             f"/repos/{_path_part(owner)}/{_path_part(repo)}/issues",
             payload.model_dump(exclude_none=True),
@@ -81,7 +90,9 @@ class GitHubService:
         return await self._post_object("/user/repos", payload.model_dump(exclude_none=True))
 
     async def _get_object(self, path: str) -> dict[str, Any]:
-        response = await self._http.request("GET", f"{_GITHUB_BASE_URL}{path}", headers=self._headers())
+        response = await self._http.request(
+            "GET", f"{_GITHUB_BASE_URL}{path}", headers=self._headers()
+        )
         return _JSON_OBJECT.validate_python(response.json())
 
     async def _post_object(self, path: str, payload: dict[str, Any]) -> dict[str, Any]:
