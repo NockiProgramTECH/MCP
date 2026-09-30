@@ -7,9 +7,11 @@ from mcp.server.fastmcp import FastMCP
 from .config import get_settings
 from .core.logging import configure_logging
 from .services.github import GitHubService
+from .services.linkedin import LinkedInService
 from .services.meta import MetaService
 from .services.tiktok import TikTokService
 from .tools.github import register_github_tools
+from .tools.linkedin import register_linkedin_tools
 from .tools.meta import register_meta_tools
 from .tools.tiktok import register_tiktok_tools
 
@@ -28,13 +30,16 @@ def create_server() -> FastMCP:
     )
 
     github_service = GitHubService(settings)
+    linkedin_service = LinkedInService(settings)
     meta_service = MetaService(settings)
     tiktok_service = TikTokService(settings)
     register_github_tools(server, github_service)
+    register_linkedin_tools(server, linkedin_service)
     register_meta_tools(server, meta_service)
     register_tiktok_tools(server, tiktok_service)
     server._managed_services = [  # type: ignore[attr-defined]
         github_service,
+        linkedin_service,
         meta_service,
         tiktok_service,
     ]

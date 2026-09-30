@@ -34,6 +34,7 @@ class Settings(BaseSettings):
         default=None, validation_alias="TIKTOK_ACCESS_TOKEN"
     )
     meta_graph_api_version: str = "v26.0"
+    linkedin_api_version: str = "202601"
 
     @field_validator(
         "github_token",
