@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de confidentialité - OpenClaw MCP Server</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        header a:hover {
+            color: var(--accent-hover);
+        }
+
+        header span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        main {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight p {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        th {
+            background: var(--surface);
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            main { padding: 2rem 1rem; }
+            h1 { font-size: 1.5rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://nockiprogramtech.github.io/MCP/">OpenClaw MCP</a>
+        <span>/</span>
+        <span>Politique de confidentialité</span>
+    </header>
+
+    <main>
+        <h1>Politique de confidentialité</h1>
+        <p class="last-updated">Dernière mise à jour : 30 septembre 2026</p>
+
+        <h2>1. Introduction</h2>
+        <p>
+            La présente politique de confidentialité décrit comment le serveur OpenClaw MCP (ci-après le « Service ») traite les informations lorsque vous l'utilisez. Nous nous engageons à protéger votre vie privée et vos données.
+        </p>
+
+        <h2>2. Données collectées</h2>
+        <div class="highlight">
+            <p>Le Service ne collecte, ne stocke et ne transmet aucune donnée personnelle à des fins propres.</p>
+        </div>
+        <p>Le Service agit comme un intermédiaire (proxy) entre un agent IA et des API tierces. Les seules données qui transitent sont :</p>
+        <ul>
+            <li>Les requêtes envoyées aux API tierces (GitHub, LinkedIn, Meta, TikTok).</li>
+            <li>Les réponses retournées par ces API.</li>
+            <li>Les tokens d'accès fournis par l'utilisateur via des variables d'environnement.</li>
+        </ul>
+
+        <h2>3. Tokens d'accès</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Détail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stockage</td>
+                    <td>Les tokens ne sont jamais stockés en base de données ni sur disque par le Service.</td>
+                </tr>
+                <tr>
+                    <td>Transmission</td>
+                    <td>Les tokens sont transmis uniquement aux API tierces concernées, via HTTPS.</td>
+                </tr>
+                <tr>
+                    <td>Journalisation</td>
+                    <td>Les tokens ne sont jamais écrits dans les logs du Service.</td>
+                </tr>
+                <tr>
+                    <td>Réponses</td>
+                    <td>Les tokens ne sont jamais inclus dans les réponses MCP retournées à l'agent IA.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Services tiers</h2>
+        <p>
+            Lorsque vous utilisez le Service pour interagir avec des API tierces, vos données sont soumises aux politiques de confidentialité de ces services :
+        </p>
+        <ul>
+            <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Politique de confidentialité de GitHub</a></li>
+            <li><a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener">Politique de confidentialité de LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Politique de confidentialité de Meta</a></li>
+            <li><a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener">Politique de confidentialité de TikTok</a></li>
+        </ul>
+
+        <h2>5. Journalisation (Logs)</h2>
+        <p>
+            Le Service peut générer des logs techniques à des fins de débogage. Ces logs :
+        </p>
+        <ul>
+            <li>Ne contiennent jamais de tokens d'accès ou de secrets.</li>
+            <li>Peuvent contenir des métadonnées de requêtes (endpoints appelés, codes de statut HTTP).</li>
+            <li>Restent locaux sur la machine où le Service est exécuté.</li>
+            <li>Ne sont jamais transmis à des services externes.</li>
+        </ul>
+
+        <h2>6. Cookies et suivi</h2>
+        <p>
+            Le Service ne définit aucun cookie, ne fait aucun suivi analytique et n'utilise aucun pixel de suivi. Ce site statique (GitHub Pages) n'utilise pas de cookies.
+        </p>
+
+        <h2>7. Sécurité</h2>
+        <p>
+            Nous mettons en place des mesures de sécurité pour protéger les données en transit :
+        </p>
+        <ul>
+            <li>Toutes les communications avec les API tierces se font via HTTPS.</li>
+            <li>Les entrées utilisateur sont validées via Pydantic.</li>
+            <li>Les timeouts HTTP sont configurés pour éviter les connexions pendantes.</li>
+            <li>Le Service ne permet aucune exécution de code arbitraire.</li>
+        </ul>
+
+        <h2>8. Droits des utilisateurs</h2>
+        <p>
+            Puisque le Service ne collecte pas de données personnelles, il n'y a pas de données à consulter, modifier ou supprimer. Si vous souhaitez supprimer des données créées via le Service sur des plateformes tierces (publications, issues, etc.), veuillez le faire directement sur la plateforme concernée.
+        </p>
+
+        <h2>9. Mineurs</h2>
+        <p>
+            Le Service n'est pas destiné aux personnes de moins de 16 ans. Nous ne collectons pas sciemment de données de mineurs.
+        </p>
+
+        <h2>10. Modifications</h2>
+        <p>
+            Nous nous réservons le droit de modifier la présente politique à tout moment. Les modifications prennent effet dès leur publication sur cette page. La date de dernière mise à jour est indiquée en haut du document.
+        </p>
+
+        <h2>11. Contact</h2>
+        <p>
+            Pour toute question relative à la confidentialité, veuillez ouvrir une issue sur le <a href="https://github.com/nockiprogramtech/MCP/issues" target="_blank" rel="noopener">dépôt GitHub</a> du projet.
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OpenClaw MCP Server &mdash; <a href="/MCP/terms">Conditions</a> &middot; <a href="/MCP/privacy">Confidentialité</a> &middot; <a href="https://github.com/nockiprogramtech/MCP">GitHub</a></p>
+    </footer>
+</body>
+</html>
