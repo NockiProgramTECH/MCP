@@ -8,8 +8,10 @@ from .config import get_settings
 from .core.logging import configure_logging
 from .services.github import GitHubService
 from .services.meta import MetaService
+from .services.tiktok import TikTokService
 from .tools.github import register_github_tools
 from .tools.meta import register_meta_tools
+from .tools.tiktok import register_tiktok_tools
 
 logger = logging.getLogger(__name__)
 
@@ -27,9 +29,15 @@ def create_server() -> FastMCP:
 
     github_service = GitHubService(settings)
     meta_service = MetaService(settings)
+    tiktok_service = TikTokService(settings)
     register_github_tools(server, github_service)
     register_meta_tools(server, meta_service)
-    server._managed_services = [github_service, meta_service]  # type: ignore[attr-defined]
+    register_tiktok_tools(server, tiktok_service)
+    server._managed_services = [  # type: ignore[attr-defined]
+        github_service,
+        meta_service,
+        tiktok_service,
+    ]
 
     @server.tool(description="Returns the server name and configured integration status.")
     def server_status() -> dict[str, object]:
