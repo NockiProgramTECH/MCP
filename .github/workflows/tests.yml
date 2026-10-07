@@ -3,9 +3,16 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: uv run python -m openclaw_mcp
+      - uses: astral-sh/setup-uv@v6      # uv n'existe pas sur ubuntu-latest
+        with:
+          enable-cache: true
+      - run: uv python install 3.13      # requires-python = ">=3.13"
+      - run: uv sync --locked            # échoue si uv.lock a dérivé
+      - run: uv run pytest               # tests/ : 6 fichiers
