@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions d'utilisation - OpenClaw MCP Server</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        header a:hover {
+            color: var(--accent-hover);
+        }
+
+        header span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        main {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            main { padding: 2rem 1rem; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://nockiprogramtech.github.io/MCP/">OpenClaw MCP</a>
+        <span>/</span>
+        <span>Conditions d'utilisation</span>
+    </header>
+
+    <main>
+        <h1>Conditions d'utilisation</h1>
+        <p class="last-updated">Dernière mise à jour : 30 septembre 2026</p>
+
+        <h2>1. Acceptation des conditions</h2>
+        <p>
+            En accédant au serveur OpenClaw MCP (ci-après le « Service ») ou en l'utilisant, vous acceptez d'être lié par les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le Service.
+        </p>
+
+        <h2>2. Description du Service</h2>
+        <p>
+            OpenClaw MCP Server est un serveur open source implémentant le protocole MCP (Model Context Protocol). Il permet de connecter des agents IA à des services externes tels que GitHub, LinkedIn, Meta (Facebook et Instagram) et TikTok via des outils standardisés.
+        </p>
+
+        <h2>3. Utilisation autorisée</h2>
+        <p>Vous vous engagez à utiliser le Service uniquement dans le respect des lois applicables et des présentes conditions. En particulier, vous acceptez de :</p>
+        <ul>
+            <li>Ne pas utiliser le Service à des fins illégales ou non autorisées.</li>
+            <li>Ne pas tenter de contourner les mécanismes de sécurité du Service.</li>
+            <li>Ne pas utiliser le Service pour du scraping ou de la collecte automatisée de données non autorisée.</li>
+            <li>Ne pas utiliser le Service pour harceler, abuser ou nuire à d'autres personnes.</li>
+            <li>Respecter les conditions d'utilisation des API tierces (GitHub, LinkedIn, Meta, TikTok).</li>
+        </ul>
+
+        <h2>4. Comptes et authentification</h2>
+        <p>
+            Le Service nécessite des tokens d'accès (OAuth / API) pour interagir avec les services tiers. Vous êtes responsable de la confidentialité de vos tokens et de toutes les activités effectuées via ceux-ci.
+        </p>
+        <div class="highlight">
+            <p>Ne partagez jamais vos tokens d'accès. Le Service ne stocke aucun token de manière permanente.</p>
+        </div>
+
+        <h2>5. Services tiers</h2>
+        <p>
+            Le Service interagit avec des API tierces. L'utilisation de ces services est soumise à leurs propres conditions :
+        </p>
+        <ul>
+            <li><a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener">Conditions d'utilisation de GitHub</a></li>
+            <li><a href="https://www.linkedin.com/legal/user-agreement" target="_blank" rel="noopener">Contrat d'utilisation de LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/terms.php" target="_blank" rel="noopener">Conditions de service de Meta</a></li>
+            <li><a href="https://www.tiktok.com/legal/terms-of-service" target="_blank" rel="noopener">Conditions de service de TikTok</a></li>
+        </ul>
+
+        <h2>6. Propriété intellectuelle</h2>
+        <p>
+            Le code source du Service est distribué sous licence open source. Consultez le fichier LICENSE du dépôt pour les détails. Vous êtes libre de modifier et redistribuer le code conformément à cette licence.
+        </p>
+
+        <h2>7. Limitation de responsabilité</h2>
+        <p>
+            Le Service est fourni « en l'état », sans garantie d'aucune sorte, expresse ou implicite. En aucun cas les auteurs ou contributeurs ne pourront être tenus responsables de dommages directs, indirects, accessoires, spéciaux ou consécutifs résultant de l'utilisation ou de l'impossibilité d'utiliser le Service.
+        </p>
+        <ul>
+            <li>Les pertes de données liées à l'utilisation des API tierces.</li>
+            <li>Les interruptions de service causées par les fournisseurs tiers.</li>
+            <li>Les conséquences de l'utilisation incorrecte des tokens d'accès.</li>
+        </ul>
+
+        <h2>8. Protection des données</h2>
+        <p>
+            Le Service ne collecte pas de données personnelles. Les tokens d'accès sont fournis par l'utilisateur via des variables d'environnement et ne sont ni stockés ni transmis à des tiers autres que les API concernées. Pour plus de détails, consultez notre <a href="/MCP/privacy">Politique de confidentialité</a>.
+        </p>
+
+        <h2>9. Modifications des conditions</h2>
+        <p>
+            Nous nous réservons le droit de modifier les présentes conditions à tout moment. Les modifications prennent effet dès leur publication sur cette page. Votre utilisation continue du Service après publication constitue votre acceptation.
+        </p>
+
+        <h2>10. Résiliation</h2>
+        <p>
+            Nous nous réservons le droit de suspendre ou résilier votre accès au Service à tout moment, sans préavis, en cas de non-respect des présentes conditions.
+        </p>
+
+        <h2>11. Droit applicable</h2>
+        <p>
+            Les présentes conditions sont régies par le droit en vigueur. Tout litige sera soumis aux tribunaux compétents.
+        </p>
+
+        <h2>12. Contact</h2>
+        <p>
+            Pour toute question, veuillez ouvrir une issue sur le <a href="https://github.com/nockiprogramtech/MCP/issues" target="_blank" rel="noopener">dépôt GitHub</a> du projet.
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OpenClaw MCP Server &mdash; <a href="/MCP/terms">Conditions</a> &middot; <a href="/MCP/privacy">Confidentialité</a> &middot; <a href="https://github.com/nockiprogramtech/MCP">GitHub</a></p>
+    </footer>
+</body>
+</html>
