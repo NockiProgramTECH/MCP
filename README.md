@@ -75,6 +75,16 @@ Les permissions habituelles sont `user.info.basic` pour le profil, `video.list` 
 
 `tiktok_publish_video` utilise le mode `PULL_FROM_URL`. L'URL doit être HTTPS, publique et appartenir à un domaine ou préfixe vérifié dans l'application TikTok. Le serveur ne télécharge aucun fichier arbitraire. L'outil initialise la publication et renvoie un `publish_id`; il ne simule pas une publication. La fonctionnalité complète de fichier local nécessitera un flux d'upload par morceaux et ne sera pas ajoutée sans besoin explicite.
 
+## LinkedIn
+
+Les outils LinkedIn sont `linkedin_get_profile`, `linkedin_create_post` et `linkedin_get_posts`. Le profil utilise OpenID Connect via `GET /v2/userinfo`. La création utilise le Posts API officiel `POST /rest/posts`, qui remplace les anciens endpoints Shares/UGC.
+
+Configurez `LINKEDIN_ACCESS_TOKEN`. Pour publier sur un profil personnel, l'application doit disposer de `w_member_social`. Pour publier sur une organisation, utilisez un URN `urn:li:organization:<id>`, le scope `w_organization_social` et un rôle administrateur autorisé. Ces accès dépendent des produits et validations LinkedIn.
+
+La lecture des posts d'un membre nécessite une permission de lecture restreinte ; elle ne doit pas être présentée comme disponible par défaut. La lecture des posts d'une organisation nécessite la permission organisationnelle correspondante. Les outils d'écriture sont explicitement marqués comme modifiant un état externe.
+
+La version REST LinkedIn est configurable avec `OPENCLAW_MCP_LINKEDIN_API_VERSION`; vérifiez la version supportée par votre application avant un appel réel.
+
 ## Sécurité
 
 - aucun secret n'est codé en dur ;
